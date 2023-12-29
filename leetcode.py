@@ -11,3 +11,13 @@ class Solution:
        text = s.split()
        t =  text[-1]
        return len(t)
+#66. Plus One
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        digits[-1] += 1
+        ls = str(digits[-1])
+        digits.pop()
+        for lists in ls:
+            ints = int(lists)
+            digits.append(ints)
+        return digits
