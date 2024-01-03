@@ -26,3 +26,22 @@ class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
         a = haystack.find(needle)
         return a
+
+# 35. Search Insert Position
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        lists = []
+
+        for i in nums:
+            if target in nums:
+                return nums.index(target)
+                break
+            elif target is not nums:
+                lists.append(i)
+
+        else:
+            lists.append(target)
+            lists.sort()
+            return lists.index(target)
+
+
