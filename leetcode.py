@@ -76,3 +76,14 @@ class Solution:
                 current = current.next
 
         return dummy.next
+# 206. Reverse Linked List
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        prev, current = None, head
+
+        while current:
+            next_node = current.next
+            current.next = prev
+            prev, current = current, next_node
+
+        return prev
