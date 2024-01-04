@@ -111,3 +111,16 @@ class Solution:
             return True
         else:
             return False
+# 1816. Truncate Sentence
+class Solution:
+    def truncateSentence(self, s: str, k: int) -> str:
+        ls = s.split()
+        string = ""
+        for i in range(k):
+            i += 1
+            string += ls[i - 1]
+            if i == k:
+                string += ""
+            else:
+              string += " "
+        return string
