@@ -132,3 +132,10 @@ class Solution:
 class Solution:
     def sortSentence(self, s: str) -> str:
         return ' '.join(word[:-1] for word in sorted(s.split(), key=lambda x: int(x[-1])))
+# 557. Reverse Words in a String III
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        words = s.split()
+        reversed_words = [word[::-1] for word in words]
+        result = ' '.join(reversed_words)
+        return result
