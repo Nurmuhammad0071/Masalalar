@@ -95,3 +95,19 @@ class Solution:
             if x in word:
                 result.append(index)
         return result        
+# 1662. Check If Two String Arrays are Equivalent
+class Solution:
+    def arrayStringsAreEqual(self, word1: List[str], word2: List[str]) -> bool:
+        lists1 = ""
+        lists2 = ""
+        for i in word1:
+            if i is not lists1:
+                lists1 += i
+
+        for i in word2:
+            if i is not lists2:
+                lists2 += i
+        if lists1 == lists2:
+            return True
+        else:
+            return False
