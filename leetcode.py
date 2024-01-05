@@ -163,3 +163,111 @@ class Solution:
         else:
             return word
         return result
+# 2418. Sort the People
+class Solution:
+    def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
+        sorted_names = [name for _, name in sorted(zip(heights, names), reverse=True)]
+        return sorted_names
+# 1768. Merge Strings Alternately
+class Solution:
+    def mergeAlternately(self, word1: str, word2: str) -> str:
+        merged = ''.join([a + b for a, b in zip_longest(word1, word2, fillvalue='')])
+        return merged
+# 1436. Destination City
+class Solution:
+    def destCity(self, paths: List[List[str]]) -> str:
+        starting_cities = set(path[0] for path in paths)
+        for _, destination in paths:
+            if destination not in starting_cities:
+                return destination    
+# 1812. Determine Color of a Chessboard Square
+class Solution:
+    def squareIsWhite(self, coordinates: str) -> bool:
+        letter, number = coordinates[0], int(coordinates[1])
+        return (ord(letter) - ord('a') + number) % 2 == 0
+# 344. Reverse String
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        """
+        Do not return anything, modify s in-place instead.
+        """
+        return s.reverse()
+# 1704. Determine if String Halves Are Alike
+class Solution:
+    def halvesAreAlike(self, s: str) -> bool:
+        vowels = set("aeiouAEIOU")
+        def countVowels(substring):
+            return sum(char in vowels for char in substring)
+
+        mid = len(s) // 2
+        return countVowels(s[:mid]) == countVowels(s[mid:])
+# 2678. Number of Senior Citizens
+class Solution:
+    def countSeniors(self, details: List[str]) -> int:
+        count = 0
+        for detail in details:
+            age = int(detail[11:13])
+            if age > 60:
+                count += 1
+
+        return count
+# 657. Robot Return to Origin
+class Solution:
+    def judgeCircle(self, moves: str) -> bool:
+        x, y = 0, 0
+        for move in moves:
+            if move == 'U':
+                y += 1
+            elif move == 'D':
+                y -= 1
+            elif move == 'L':
+                x -= 1
+            elif move == 'R':
+                x += 1
+
+        return x == 0 and y == 0
+# 2586. Count the Number of Vowel Strings in Range
+class Solution:
+    def vowelStrings(self, words: List[str], left: int, right: int) -> int:
+        vowels = set("aeiouAEIOU")
+        count = 0
+        for i in range(left, right + 1):
+            word = words[i]
+            if word[0] in vowels and word[-1] in vowels:
+                count += 1
+
+        return count
+# 2278. Percentage of Letter in String
+class Solution:
+    def percentageLetter(self, s: str, letter: str) -> int:
+        total_characters = len(s)
+        letter_count = s.count(letter)
+        if total_characters == 0:
+            return 0
+        percentage = (letter_count / total_characters) * 100
+        return int(percentage)
+# 412. Fizz Buzz
+class Solution:
+    def fizzBuzz(self, n: int) -> List[str]:
+        result = []
+        for i in range(1, n+1):
+            if i % 3 == 0 and i % 5 == 0:
+                result.append("FizzBuzz")
+            elif i % 3 == 0:
+                result.append("Fizz")
+            elif i % 5 == 0:
+                result.append("Buzz")
+            else:
+                result.append(str(i))
+        
+        return result
+# 771. Jewels and Stones
+class Solution:
+    def numJewelsInStones(self, jewels: str, stones: str) -> int:
+        jewel_set = set(jewels)
+        count = 0
+        for stone in stones:
+            if stone in jewel_set:
+                count += 1
+        return count
+
