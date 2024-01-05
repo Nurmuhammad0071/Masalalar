@@ -149,3 +149,17 @@ class Solution:
                 count += 1
 
         return count
+# 2000. Reverse Prefix of Word
+class Solution:
+    def reversePrefix(self, word: str, ch: str) -> str:
+        result = ""
+        if word.find(ch) >= 0:
+            fnd = word.find(ch)
+            revs = word[:fnd + 1]
+            strs = revs[::-1]
+            result += strs
+            ids = word[:fnd:-1]
+            result += ids[::-1]
+        else:
+            return word
+        return result
