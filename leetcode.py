@@ -139,3 +139,13 @@ class Solution:
         reversed_words = [word[::-1] for word in words]
         result = ' '.join(reversed_words)
         return result
+# 1684. Count the Number of Consistent Strings
+class Solution:
+    def countConsistentStrings(self, allowed: str, words: List[str]) -> int:
+        allowed_set = set(allowed)
+        count = 0
+        for word in words:
+            if all(char in allowed_set for char in word):
+                count += 1
+
+        return count
