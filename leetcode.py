@@ -270,4 +270,41 @@ class Solution:
             if stone in jewel_set:
                 count += 1
         return count
+# 1235. Maximum Profit in Job Scheduling
+from typing import List
+from bisect import bisect_right
+
+class Solution:
+    def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
+        jobs = sorted(zip(startTime, endTime, profit), key=lambda x: x[1])
+        dp = [0] * len(jobs)
+        dp[0] = jobs[0][2]
+
+        for i in range(1, len(jobs)):
+            included_profit = jobs[i][2]
+            latest_non_overlap = self.find_latest_non_overlap(jobs, i)
+
+            if latest_non_overlap != -1:
+                included_profit += dp[latest_non_overlap]
+
+            dp[i] = max(included_profit, dp[i - 1])
+
+        return dp[-1]
+
+    def find_latest_non_overlap(self, jobs, index):
+        low, high = 0, index - 1
+
+        while low <= high:
+            mid = (low + high) // 2
+            if jobs[mid][1] <= jobs[index][0]:
+                if jobs[mid + 1][1] <= jobs[index][0]:
+                    low = mid + 1
+                else:
+                    return mid
+            else:
+                high = mid - 1
+
+        return -1
+
+
 
