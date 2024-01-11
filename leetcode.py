@@ -315,3 +315,34 @@ class Solution:
             nums1.append(i)
         nums.extend(nums1)
         return nums
+# 1108. Defanging an IP Address
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+from typing import Optional
+
+class Solution:
+    def maxAncestorDiff(self, root: Optional[TreeNode]) -> int:
+        def dfs(node, min_val, max_val):
+            if not node:
+                return max_val - min_val
+
+            min_val = min(min_val, node.val)
+            max_val = max(max_val, node.val)
+
+            left_diff = dfs(node.left, min_val, max_val)
+            right_diff = dfs(node.right, min_val, max_val)
+
+            return max(left_diff, right_diff)
+
+        return dfs(root, root.val, root.val)
+
+# Example usage:
+# You can create an instance of the Solution class and call the maxAncestorDiff method with the root of your binary tree.
+# For example:
+# solution = Solution()
+# result = solution.maxAncestorDiff(root)
