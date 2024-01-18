@@ -346,3 +346,25 @@ class Solution:
 # For example:
 # solution = Solution()
 # result = solution.maxAncestorDiff(root)
+
+
+# 70. Climbing Stairs
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        if n == 1:
+            return 1
+        elif n == 2:
+            return 2
+
+        # Initialize an array to store the number of ways to climb each step
+        ways = [0] * (n + 1)
+
+        # Base cases
+        ways[1] = 1
+        ways[2] = 2
+
+        # Calculate the number of ways for each step using dynamic programming
+        for i in range(3, n + 1):
+            ways[i] = ways[i - 1] + ways[i - 2]
+
+        return ways[n]
